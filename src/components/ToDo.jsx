@@ -12,7 +12,7 @@ const ToDo = (props) => {
             .sort((a, b) => a.id > b.id ? 1 : -1)
             .map((task, index) => {
             return (
-              <React.Fragment key={task.id}>
+              <>
                 <div className="col taskBg">
                   <span className="taskNumber">{index + 1}</span>
                   <span className="taskTitle">{task.title}</span>
@@ -31,8 +31,7 @@ const ToDo = (props) => {
                     </span>
                   </div>
                 </div>
-                
-              </React.Fragment>
+              </>
             )
           })}
         </>
