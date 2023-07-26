@@ -13,10 +13,9 @@ const ToDo = (props) => {
             .map((task, index) => {
             return (
               <>
-                <div className="col taskBg">
+                <div className="taskBg">
                   <span className="taskNumber">{index + 1}</span>
-                  <span className="taskTitle">{task.title}</span>
-                  <span className="taskDescription">{task.description}</span>
+                  <span className="taskTask">{task.title} {task.description}</span>
                   <div className="iconsWrap">
                     <span title="Edit" 
                           onClick={ () => props.setUpdateData({ 

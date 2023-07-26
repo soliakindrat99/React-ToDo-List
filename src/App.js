@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
-import AddTaskForm from './components/AddTaskForm';
-import UpdateForm from './components/UpdateForm';
+import TaskForm from './components/TaskForm';
 import ToDo from './components/ToDo';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -74,21 +73,34 @@ function App() {
       <h2>To Do List App</h2>
       <br></br>
 
-      {updateData && updateData ? (
-      <UpdateForm 
-        updateData={updateData}
-        changeTitle={changeTitle}
-        changeDescription={changeDescription}
-        updateTask={updateTask}
-        cancelUpdate={cancelUpdate}
-        />) : 
-      (<AddTaskForm 
-        newTitle={newTitle}
-        setNewTitle = {setNewTitle}
-        newDescription = {newDescription}
-        setNewDescription={setNewDescription}
-        addTask={addTask}
-        />)}
+        {updateData ? (
+        <TaskForm 
+          isEdit={true}
+          updateData={updateData}
+          newTitle={newTitle}
+          changeTitle={changeTitle}
+          setNewTitle = {setNewTitle}
+          newDescription = {newDescription}
+          changeDescription={changeDescription}
+          setNewDescription={setNewDescription}
+          addTask={addTask}
+          updateTask={updateTask}
+          cancelUpdate={cancelUpdate}
+        />) :(
+          <TaskForm 
+          isEdit={false}
+          updateData={updateData}
+          newTitle={newTitle}
+          changeTitle={changeTitle}
+          setNewTitle = {setNewTitle}
+          newDescription = {newDescription}
+          changeDescription={changeDescription}
+          setNewDescription={setNewDescription}
+          addTask={addTask}
+          updateTask={updateTask}
+          cancelUpdate={cancelUpdate}
+        />
+        )}
 
       {toDo && toDo.length ? '' : 'No tasks...'}
       <ToDo 

@@ -3,7 +3,6 @@ body {
   color: #fff;
 }
 
-
 .App {
   text-align: center;
 }
@@ -17,7 +16,6 @@ body {
   border-radius: 6px;
   margin-bottom: 20px;
   padding: 10px 140px 10px 15px;
-  display: flex;
   text-align: left;
   font-size: 22px;
   position: relative;
@@ -34,20 +32,14 @@ body {
   border-radius: 50%;
   width: 26px;
   height: 26px;
-  display: flex;
+  display: inline-block;
   text-align: center;
-  font-size: 14px;
-  margin-right: 8px;
-  align-items: center;
-  justify-content: center;
+  font-size: 16px;
+  margin: 8px;
 }
 
-.taskBg .taskNumber {
-  margin: 5px;
-}
-
-.taskBg .taskTitle {
-  margin-right: 8px;
+.taskBg .taskTask {
+  flex: 1;
 }
 
 .taskBg .iconsWrap {
