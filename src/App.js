@@ -8,11 +8,12 @@ import './App.css';
 function App() {
   // Tasks (ToDo List) State
   const [toDo, setToDo] = useState([
-    {id: 1, title: "Task 1", description: "t1"},
-    {id: 2, title: "Task 2", description: "t2"}
+    {id: 1, priority: 1, title: "Task 1", description: "t1"},
+    {id: 2, priority: 2, title: "Task 2", description: "t2"}
   ]);
 
   // Temp State
+  const [newPriority, setNewPriority] = useState(3);
   const [newTitle, setNewTitle] = useState('');
   const [newDescription, setNewDescription] = useState('');
   const [updateData, setUpdateData] = useState('');
@@ -21,7 +22,7 @@ function App() {
   const addTask = () => {
     if(newTitle && newDescription) {
       let num = toDo.length + 1; 
-      let newEntry = { id: num, title: newTitle, description: newDescription }
+      let newEntry = { id: num, priority: newPriority, title: newTitle, description: newDescription }
       setToDo([...toDo, newEntry])
       setNewTitle('');
       setNewDescription('');
@@ -39,10 +40,22 @@ function App() {
     setUpdateData('');
   }
 
+  //Change priority for update
+  const changePriority = (e) => {
+    let newEntry = {
+      id: updateData.id,
+      priority: e.target.value,
+      title: updateData.title,
+      description: updateData.description
+    }
+    setUpdateData(newEntry);
+  }
+
   //Change title for update
   const changeTitle = (e) => {
     let newEntry = {
       id: updateData.id,
+      priority: updateData.priority,
       title: e.target.value,
       description: updateData.description
     }
@@ -52,6 +65,7 @@ function App() {
   const changeDescription = (e) => {
     let newEntry = {
       id: updateData.id,
+      priority: updateData.priority,
       title: updateData.title,
       description: e.target.value
     }
@@ -76,6 +90,9 @@ function App() {
         <TaskForm 
           isEdit={true}
           updateData={updateData}
+          newPriority={newPriority}
+          changePriority={changePriority}
+          setNewPriority={setNewPriority}
           newTitle={newTitle}
           changeTitle={changeTitle}
           setNewTitle = {setNewTitle}
@@ -89,6 +106,9 @@ function App() {
           <TaskForm 
           isEdit={false}
           updateData={updateData}
+          newPriority={newPriority}
+          changePriority={changePriority}
+          setNewPriority={setNewPriority}
           newTitle={newTitle}
           changeTitle={changeTitle}
           setNewTitle = {setNewTitle}

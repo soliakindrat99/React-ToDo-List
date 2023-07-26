@@ -23,3 +23,7 @@ body {
   font-size: 22px;
   position: relative;
 }
+
+.taskBg .priorityCol {
+  max-width: 70px;
+}
