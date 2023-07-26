@@ -1,36 +1,32 @@
 import React from 'react';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faPen, faTrashCan
-} from '@fortawesome/free-solid-svg-icons';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
+import IconButton from '@mui/material/IconButton';
+import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
+import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 
 const ToDo = (props) => {
     return (
         <>
         {props.toDo && props.toDo
-            .sort((a, b) => a.id > b.id ? 1 : -1)
-            .map((task, index) => {
+            .map((task) => {
             return (
-              <>
-                <div className="taskBg">
-                  <span className="taskNumber">{index + 1}</span>
-                  <span className="taskTask">{task.title} {task.description}</span>
-                  <div className="iconsWrap">
-                    <span title="Edit" 
-                          onClick={ () => props.setUpdateData({ 
-                            id: task.id, 
-                            title: task.title, 
-                            description: task.description
-                        })}>
-                      <FontAwesomeIcon icon={faPen} />
-                    </span>
-                    <span title="Delete" onClick={() => props.deleteTask(task.id)}>
-                      <FontAwesomeIcon icon={faTrashCan} />
-                    </span>
-                  </div>
-                </div>
-              </>
+              <List >
+                <ListItem className="taskBg">                
+                  <ListItemText>{task.title} {task.description}</ListItemText>
+                  <IconButton title="Edit" 
+                    onClick={ () => props.setUpdateData({ 
+                      id: task.id, 
+                      title: task.title, 
+                      description: task.description
+                    })}><EditOutlinedIcon sx={{ fill: '#fff' }}/></IconButton>
+                  <IconButton title="Delete"
+                    onClick={() => props.deleteTask(task.id)}>
+                      <DeleteOutlinedIcon sx={{ fill: '#fff', }}/></IconButton>
+                </ListItem>
+              </List>
             )
           })}
         </>

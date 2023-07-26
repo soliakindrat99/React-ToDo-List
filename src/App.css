@@ -4,74 +4,22 @@ body {
 }
 
 .App {
-  text-align: center;
+  width: 50%;
+  display: inline-block;
+  padding: 30px;
 }
 
-.App h2{
+.App h4{
+  text-align: center;
   color: #8ae2b9e2;
 }
 
 .taskBg {
   background-color: #555;
   border-radius: 6px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   padding: 10px 140px 10px 15px;
   text-align: left;
   font-size: 22px;
   position: relative;
 }
-
-.taskBg div {
-  display: flex;
-  align-items: center;
-}
-
-.taskNumber {
-  color: #ffffff;
-  border: 1px solid #fffcfc;
-  border-radius: 50%;
-  width: 26px;
-  height: 26px;
-  display: inline-block;
-  text-align: center;
-  font-size: 16px;
-  margin: 8px;
-}
-
-.taskBg .taskTask {
-  flex: 1;
-}
-
-.taskBg .iconsWrap {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  right: 15px;
-  width: auto;
-  display: inline-block;
-}
-
-.taskBg .iconsWrap span {
-  display: inline-block;
-  margin: 0px 10px 0 10px;
-  cursor: pointer;
-  color: #8ae2b9e2;
-}
-
-.taskBg .iconsWrap span:hover {
-  color: yellow;
-}
-
-.form{
-  margin: 40px;
-  text-align: end;
-}
-
-.form div {
-  text-align: start;
-}
-
-.form button{
-  margin: 5px;
-}
-

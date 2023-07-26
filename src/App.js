@@ -2,8 +2,7 @@ import React, {useState} from 'react';
 import TaskForm from './components/TaskForm';
 import ToDo from './components/ToDo';
 
-import 'bootstrap/dist/css/bootstrap.min.css';
-
+import {Typography} from '@mui/material';
 import './App.css';
 
 function App() {
@@ -69,9 +68,9 @@ function App() {
 
   return (
     <div className="container App">
-      <br></br>
-      <h2>To Do List App</h2>
-      <br></br>
+      <Typography variant="h4">
+      To Do List App
+     </Typography>
 
         {updateData ? (
         <TaskForm 
