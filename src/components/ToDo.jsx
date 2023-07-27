@@ -47,6 +47,7 @@ const ToDo = (props) => {
                   <IconButton title="Edit" 
                     onClick={ () => props.setUpdateData({ 
                       id: task.id, 
+                      priority: task.priority,
                       title: task.title, 
                       description: task.description
                     })}><EditOutlinedIcon sx={{ fill: '#fff' }}/></IconButton>

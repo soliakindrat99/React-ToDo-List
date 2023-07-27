@@ -5,7 +5,7 @@ import ToDo from './components/ToDo';
 import {Typography} from '@mui/material';
 import './App.css';
 
-function App() {
+function App(props) {
   // Tasks (ToDo List) State
   const [toDo, setToDo] = useState([
     {id: 1, priority: 1, title: "Task 1", description: "t1"},
@@ -13,7 +13,7 @@ function App() {
   ]);
 
   // Temp State
-  const [newPriority, setNewPriority] = useState(3);
+  const [newPriority, setNewPriority] = useState(0);
   const [newTitle, setNewTitle] = useState('');
   const [newDescription, setNewDescription] = useState('');
   const [updateData, setUpdateData] = useState('');
