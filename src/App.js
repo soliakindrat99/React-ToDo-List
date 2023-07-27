@@ -13,7 +13,7 @@ function App(props) {
   ]);
 
   // Temp State
-  const [newPriority, setNewPriority] = useState(0);
+  const [newPriority, setNewPriority] = useState(3);
   const [newTitle, setNewTitle] = useState('');
   const [newDescription, setNewDescription] = useState('');
   const [updateData, setUpdateData] = useState('');
