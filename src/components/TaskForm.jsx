@@ -10,7 +10,7 @@ const TaskForm = (props) => {
              backgroundColor: "#555", 
              padding: 4,
              borderRadius: 1}}> 
-          <FormLabel sx={{color: "white"}}>Priority</FormLabel>
+          <FormLabel className='formLabel'>Priority</FormLabel>
           <Select className='selectPriority' type="text" size='small' defaultValue={3} 
             sx={props.getPriorityColor(props.isEdit ? props.updateData.priority : props.newPriority)}
             value={props.isEdit ? props.updateData.priority : props.newPriority}
@@ -22,14 +22,14 @@ const TaskForm = (props) => {
             <MenuItem sx={props.getPriorityColor(3)} value={3}>Low</MenuItem>
           </Select>
 
-          <FormLabel sx={{color: "white"}}>Enter Title</FormLabel>
+          <FormLabel className='formLabel'>Enter Title</FormLabel>
           <TextField className='inputTitle' type="text" size='small'
           value={props.isEdit ? props.updateData.title : props.newTitle}
                         onChange={ props.isEdit ? (
                             (e) => props.changeTitle(e)) : (
                             (e) => props.setNewTitle(e.target.value))} />
                             
-          <FormLabel sx={{color: "white"}}>Enter Description</FormLabel>
+          <FormLabel className='formLabel'>Enter Description</FormLabel>
           <TextField className='inputDescription' type="text" size='small'
           value={props.isEdit ? props.updateData.description : props.newDescription}
                         onChange={ props.isEdit ? (
