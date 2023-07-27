@@ -1,109 +1,89 @@
-import React, {useState} from 'react';
-import TaskForm from './components/TaskForm';
-import ToDo from './components/ToDo';
+import React, { useState } from "react";
+import TaskForm from "./components/TaskForm";
+import ToDo from "./components/ToDo";
 
-import {Typography} from '@mui/material';
-import './App.css';
+import { Typography, Box } from "@mui/material";
+import "./App.css";
 
-function App(props) {
-  // Tasks (ToDo List) State
+function App() {
   const [toDo, setToDo] = useState([
-    {id: 1, priority: 1, title: "Task 1", description: "t1"},
-    {id: 2, priority: 2, title: "Task 2", description: "t2"}
+    { id: 1, priority: 'High', title: "Task 1", description: "t1" },
+    { id: 2, priority: 'Medium', title: "Task 2", description: "t2" },
   ]);
 
-  // Temp State
-  const [newPriority, setNewPriority] = useState(3);
-  const [newTitle, setNewTitle] = useState('');
-  const [newDescription, setNewDescription] = useState('');
-  const [updateData, setUpdateData] = useState('');
+  const [newPriority, setNewPriority] = useState("Low");
+  const [newTitle, setNewTitle] = useState("");
+  const [newDescription, setNewDescription] = useState("");
+  const [updateData, setUpdateData] = useState("");
 
-  // Add task 
   const addTask = () => {
-    if(newTitle && newDescription) {
-      let num = toDo.length + 1; 
-      let newEntry = { id: num, priority: newPriority, title: newTitle, description: newDescription }
-      setToDo([...toDo, newEntry])
-      setNewTitle('');
-      setNewDescription('');
+    if (newTitle && newDescription) {
+      let num = toDo.length + 1;
+      let newEntry = {
+        id: num,
+        priority: newPriority,
+        title: newTitle,
+        description: newDescription,
+      };
+      setToDo([...toDo, newEntry]);
+      setNewTitle("");
+      setNewDescription("");
     }
-  }
+  };
 
-  // Delete task 
   const deleteTask = (id) => {
-    let newTasks = toDo.filter( task => task.id !== id)
+    let newTasks = toDo.filter((task) => task.id !== id);
     setToDo(newTasks);
-  }
+  };
 
-  // Delete task 
   const cancelUpdate = () => {
-    setUpdateData('');
-  }
+    setUpdateData("");
+  };
 
-  //Change priority for update
   const changePriority = (e) => {
     let newEntry = {
       id: updateData.id,
       priority: e.target.value,
       title: updateData.title,
-      description: updateData.description
-    }
+      description: updateData.description,
+    };
     setUpdateData(newEntry);
-  }
+  };
 
-  //Change title for update
   const changeTitle = (e) => {
     let newEntry = {
       id: updateData.id,
       priority: updateData.priority,
       title: e.target.value,
-      description: updateData.description
-    }
+      description: updateData.description,
+    };
     setUpdateData(newEntry);
-  }
-  //Change description for update
+  };
+
   const changeDescription = (e) => {
     let newEntry = {
       id: updateData.id,
       priority: updateData.priority,
+
       title: updateData.title,
-      description: e.target.value
-    }
+      description: e.target.value,
+    };
     setUpdateData(newEntry);
-  }
+  };
 
-  //Update task
   const updateTask = (e) => {
-    let filterRecords = [...toDo].filter( task => task.id !== updateData.id );
-    let updatedObject = [...filterRecords, updateData]
+    let filterRecords = [...toDo].filter((task) => task.id !== updateData.id);
+    let updatedObject = [...filterRecords, updateData];
     setToDo(updatedObject);
-    setUpdateData('');
-  }
-
-  //Get Priority Color
-  const getPriorityColor = (priority) => {
-    switch(priority) {
-      case 0:
-        return {color: 'black'};
-      case 1:
-        return {color: 'red'};
-      case 2:
-        return {color: 'Orange'};
-      case 3:
-        return {color: 'green'};
-      default:
-        return {color: 'green'};
-    }
-  }
+    setUpdateData("");
+  };
 
   return (
-    <div className="container App">
-      <Typography variant="h4">
-      To Do List App
-     </Typography>
+    <Box className="container App">
+      <Typography variant="h4">To Do List App</Typography>
 
-        {updateData ? (
-        <TaskForm 
+      {updateData ? (
+        <TaskForm
           isEdit={true}
           updateData={updateData}
           newPriority={newPriority}
@@ -111,16 +91,16 @@ function App(props) {
           setNewPriority={setNewPriority}
           newTitle={newTitle}
           changeTitle={changeTitle}
-          setNewTitle = {setNewTitle}
-          newDescription = {newDescription}
+          setNewTitle={setNewTitle}
+          newDescription={newDescription}
           changeDescription={changeDescription}
           setNewDescription={setNewDescription}
           addTask={addTask}
           updateTask={updateTask}
           cancelUpdate={cancelUpdate}
-          getPriorityColor={getPriorityColor}
-        />) :(
-          <TaskForm 
+        />
+      ) : (
+        <TaskForm
           isEdit={false}
           updateData={updateData}
           newPriority={newPriority}
@@ -128,26 +108,19 @@ function App(props) {
           setNewPriority={setNewPriority}
           newTitle={newTitle}
           changeTitle={changeTitle}
-          setNewTitle = {setNewTitle}
-          newDescription = {newDescription}
+          setNewTitle={setNewTitle}
+          newDescription={newDescription}
           changeDescription={changeDescription}
           setNewDescription={setNewDescription}
           addTask={addTask}
           updateTask={updateTask}
           cancelUpdate={cancelUpdate}
-          getPriorityColor={getPriorityColor}
         />
-        )}
+      )}
 
-      {toDo && toDo.length ? '' : 'No tasks...'}
-      <ToDo 
-        toDo={toDo}
-        setUpdateData={setUpdateData}
-        deleteTask={deleteTask}
-        getPriorityColor={getPriorityColor}
-      />
-      
-    </div>
+      <Typography variant="h4">{toDo && toDo.length ? "" : "No tasks..."}</Typography>
+      <ToDo toDo={toDo} setUpdateData={setUpdateData} deleteTask={deleteTask} />
+    </Box>
   );
 }
 
