@@ -27,3 +27,14 @@ body {
 .taskBg .priorityCol {
   max-width: 70px;
 }
+
+.taskFilter {
+  background-color: #555;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  padding: 15px 15px 0 15px;
+  text-align: left;
+  font-size: 22px;
+  position: relative;
+  width: 40%;
+}

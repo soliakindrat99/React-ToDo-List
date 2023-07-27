@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useState} from 'react';
+import TaskFilter from './TaskFilter';
 
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
@@ -8,6 +9,18 @@ import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 
 const ToDo = (props) => {
+  const [filteredPriority, setFilteredPriority] = useState(0);
+
+  const filterChangeHandler = (selectedPriority) => {
+    setFilteredPriority(selectedPriority);
+  };
+
+  const filteredTasks = props.toDo.filter((task) => {
+    if (filteredPriority !== 0)
+      return task.priority === filteredPriority;
+    else return true;
+  });
+
   const getPriorityText = (priority) => {
     switch(priority) {
       case 1:
@@ -35,7 +48,9 @@ const ToDo = (props) => {
   }
     return (
         <>
-        {props.toDo && props.toDo
+        <TaskFilter selected={filteredPriority}
+                    onChangeFilter={filterChangeHandler}/>
+        {filteredTasks && filteredTasks
             .map((task) => {
             return (
               <List >
