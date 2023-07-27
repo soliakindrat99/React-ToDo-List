@@ -11,25 +11,26 @@ const TaskForm = (props) => {
              padding: 4,
              borderRadius: 1}}> 
           <FormLabel sx={{color: "white"}}>Priority</FormLabel>
-          <Select type="text" size='small' sx={{mb: 3, backgroundColor: "#fff", borderRadius: 1}} defaultValue={3}
+          <Select className='selectPriority' type="text" size='small' defaultValue={3} 
+            sx={props.getPriorityColor(props.isEdit ? props.updateData.priority : props.newPriority)}
             value={props.isEdit ? props.updateData.priority : props.newPriority}
             onChange={ props.isEdit ? (
                 (e) => props.changePriority(e)) : (
                 (e) => props.setNewPriority(e.target.value))} >
-            <MenuItem value={1}>High</MenuItem>
-            <MenuItem value={2}>Medium</MenuItem>
-            <MenuItem value={3}>Low</MenuItem>
+            <MenuItem sx={props.getPriorityColor(1)} value={1}>High</MenuItem>
+            <MenuItem sx={props.getPriorityColor(2)} value={2}>Medium</MenuItem>
+            <MenuItem sx={props.getPriorityColor(3)} value={3}>Low</MenuItem>
           </Select>
 
           <FormLabel sx={{color: "white"}}>Enter Title</FormLabel>
-          <TextField type="text" size='small' sx={{mb: 3, backgroundColor: "#fff", borderRadius: 1}}
+          <TextField className='inputTitle' type="text" size='small'
           value={props.isEdit ? props.updateData.title : props.newTitle}
                         onChange={ props.isEdit ? (
                             (e) => props.changeTitle(e)) : (
                             (e) => props.setNewTitle(e.target.value))} />
                             
           <FormLabel sx={{color: "white"}}>Enter Description</FormLabel>
-          <TextField type="text" size='small' sx={{mb: 3, backgroundColor: "#fff", borderRadius: 1}}
+          <TextField className='inputDescription' type="text" size='small'
           value={props.isEdit ? props.updateData.description : props.newDescription}
                         onChange={ props.isEdit ? (
                             (e) => props.changeDescription(e)) : (

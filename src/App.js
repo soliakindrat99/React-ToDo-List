@@ -80,6 +80,22 @@ function App() {
     setUpdateData('');
   }
 
+  //Get Priority Color
+  const getPriorityColor = (priority) => {
+    switch(priority) {
+      case 0:
+        return {color: 'black'};
+      case 1:
+        return {color: 'red'};
+      case 2:
+        return {color: 'yellow'};
+      case 3:
+        return {color: 'green'};
+      default:
+        return {color: 'green'};
+    }
+  }
+
   return (
     <div className="container App">
       <Typography variant="h4">
@@ -102,6 +118,7 @@ function App() {
           addTask={addTask}
           updateTask={updateTask}
           cancelUpdate={cancelUpdate}
+          getPriorityColor={getPriorityColor}
         />) :(
           <TaskForm 
           isEdit={false}
@@ -118,6 +135,7 @@ function App() {
           addTask={addTask}
           updateTask={updateTask}
           cancelUpdate={cancelUpdate}
+          getPriorityColor={getPriorityColor}
         />
         )}
 
@@ -126,6 +144,7 @@ function App() {
         toDo={toDo}
         setUpdateData={setUpdateData}
         deleteTask={deleteTask}
+        getPriorityColor={getPriorityColor}
       />
       
     </div>

@@ -38,3 +38,15 @@ body {
   position: relative;
   width: 40%;
 }
+
+.selectPriority {
+  margin-bottom: 24px;
+  background-color: #fff;
+  border-radius: 4px;
+}
+
+.inputTitle,.inputDescription {
+  margin-bottom: 24px !important;
+  background-color: #fff;
+  border-radius: 4px;
+}

@@ -33,19 +33,6 @@ const ToDo = (props) => {
         return 'Low';
     }
   }
-
-  const getPriorityColor = (priority) => {
-    switch(priority) {
-      case 1:
-        return {color: 'red'};
-      case 2:
-        return {color: 'yellow'};
-      case 3:
-        return {color: 'green'};
-      default:
-        return {color: 'green'};
-    }
-  }
     return (
         <>
         <TaskFilter selected={filteredPriority}
@@ -55,7 +42,7 @@ const ToDo = (props) => {
             return (
               <List >
                 <ListItem className="taskBg"> 
-                  <ListItemText className="priorityCol" sx={getPriorityColor(task.priority)}>{getPriorityText(task.priority)}</ListItemText> 
+                  <ListItemText className="priorityCol" sx={props.getPriorityColor(task.priority)}>{getPriorityText(task.priority)}</ListItemText> 
                   <ListItemText>{task.title} {task.description}</ListItemText>            
                   <IconButton title="Edit" 
                     onClick={ () => props.setUpdateData({ 
