@@ -88,7 +88,7 @@ function App() {
       case 1:
         return {color: 'red'};
       case 2:
-        return {color: 'yellow'};
+        return {color: 'Orange'};
       case 3:
         return {color: 'green'};
       default:
