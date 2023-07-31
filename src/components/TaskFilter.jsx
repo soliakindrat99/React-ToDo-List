@@ -1,3 +1,4 @@
+import { priority } from '../helpers/constants.js';
 import getPriorityColor from "../helpers/getPriorityColor";
 import { Box, InputLabel, Select, MenuItem } from "@mui/material";
 import "./TaskFilter.css";
@@ -25,13 +26,13 @@ const TaskFilter = (props) => {
         <MenuItem sx={getPriorityColor("All")} value={"All"}>
           All
         </MenuItem>
-        <MenuItem sx={getPriorityColor("High")} value={"High"}>
+        <MenuItem sx={getPriorityColor(priority.high)} value={priority.high}>
           High
         </MenuItem>
-        <MenuItem sx={getPriorityColor("Medium")} value={"Medium"}>
+        <MenuItem sx={getPriorityColor(priority.medium)} value={priority.medium}>
           Medium
         </MenuItem>
-        <MenuItem sx={getPriorityColor("Low")} value={"Low"}>
+        <MenuItem sx={getPriorityColor(priority.low)} value={priority.low}>
           Low
         </MenuItem>
       </Select>
