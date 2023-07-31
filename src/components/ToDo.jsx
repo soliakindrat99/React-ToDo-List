@@ -30,7 +30,7 @@ const ToDo = (props) => {
         {filteredTasks &&
           filteredTasks.map((task) => {
             return (
-              <ListItem className="taskBg">
+              <ListItem className="taskBg" key={task.id}>
                 <ListItemText
                   className="priorityCol"
                   sx={getPriorityColor(task.priority)}
