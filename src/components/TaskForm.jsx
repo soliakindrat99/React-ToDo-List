@@ -11,6 +11,35 @@ import {
 import "./TaskForm.css";
 
 const TaskForm = (props) => {
+  const {
+    isEdit = false,
+    updateData = { priority: "", title: "", description: "" },
+    newPriority = "",
+    changePriority = () => {},
+    setNewPriority = () => {},
+    newTitle = "",
+    changeTitle = () => {},
+    setNewTitle = () => {},
+    newDescription = "",
+    changeDescription = () => {},
+    setNewDescription = () => {},
+    addTask = () => {},
+    updateTask = () => {},
+    cancelUpdate = () => {},
+  } = props;
+
+  const changePriorityHandler = (event) => {
+    isEdit ? changePriority(event) : setNewPriority(event.target.value);
+  };
+
+  const changeTitleHandler = (event) => {
+    isEdit ? changeTitle(event) : setNewTitle(event.target.value);
+  };
+
+  const changeDescriptionHandler = (event) => {
+    isEdit ? changeDescription(event) : setNewDescription(event.target.value);
+  };
+
   return (
     <Box className="taskForm">
       <FormControl margin="normal" color="primary">
@@ -20,15 +49,9 @@ const TaskForm = (props) => {
           type="text"
           size="small"
           defaultValue={"Low"}
-          sx={getPriorityColor(
-            props.isEdit ? props.updateData.priority : props.newPriority
-          )}
-          value={props.isEdit ? props.updateData.priority : props.newPriority}
-          onChange={
-            props.isEdit
-              ? (e) => props.changePriority(e)
-              : (e) => props.setNewPriority(e.target.value)
-          }
+          sx={getPriorityColor(isEdit ? updateData.priority : newPriority)}
+          value={isEdit ? updateData.priority : props.newPriority}
+          onChange={changePriorityHandler}
         >
           <MenuItem sx={getPriorityColor("High")} value={"High"}>
             High
@@ -46,12 +69,8 @@ const TaskForm = (props) => {
           className="inputTitle"
           type="text"
           size="small"
-          value={props.isEdit ? props.updateData.title : props.newTitle}
-          onChange={
-            props.isEdit
-              ? (e) => props.changeTitle(e)
-              : (e) => props.setNewTitle(e.target.value)
-          }
+          value={isEdit ? updateData.title : newTitle}
+          onChange={changeTitleHandler}
         />
 
         <FormLabel className="formLabel">Enter Description</FormLabel>
@@ -59,22 +78,16 @@ const TaskForm = (props) => {
           className="inputDescription"
           type="text"
           size="small"
-          value={
-            props.isEdit ? props.updateData.description : props.newDescription
-          }
-          onChange={
-            props.isEdit
-              ? (e) => props.changeDescription(e)
-              : (e) => props.setNewDescription(e.target.value)
-          }
+          value={isEdit ? updateData.description : newDescription}
+          onChange={changeDescriptionHandler}
         />
 
-        {props.isEdit ? (
+        {isEdit ? (
           <>
             <Button
               className="updateButton"
               color="success"
-              onClick={props.updateTask}
+              onClick={updateTask}
               variant="contained"
             >
               Update
@@ -82,7 +95,7 @@ const TaskForm = (props) => {
             <Button
               className="cancelButton"
               color="warning"
-              onClick={props.cancelUpdate}
+              onClick={cancelUpdate}
               variant="contained"
             >
               Cancel
@@ -92,7 +105,7 @@ const TaskForm = (props) => {
           <Button
             className="addButton"
             color="success"
-            onClick={props.addTask}
+            onClick={addTask}
             variant="contained"
           >
             Add Task

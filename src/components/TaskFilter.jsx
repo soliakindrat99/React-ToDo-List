@@ -3,8 +3,10 @@ import { Box, InputLabel, Select, MenuItem } from "@mui/material";
 import "./TaskFilter.css";
 
 const TaskFilter = (props) => {
+  const { selected = false, onChangeFilter = () => {} } = props;
+
   const dropdownChangeHandler = (event) => {
-    props.onChangeFilter(event.target.value);
+    onChangeFilter(event.target.value);
   };
 
   return (
@@ -15,10 +17,10 @@ const TaskFilter = (props) => {
         type="text"
         size="small"
         fullWidth
-        value={props.selected}
+        value={selected}
         onChange={dropdownChangeHandler}
         defaultValue={"All"}
-        sx={getPriorityColor(props.selected)}
+        sx={getPriorityColor(selected)}
       >
         <MenuItem sx={getPriorityColor("All")} value={"All"}>
           All
