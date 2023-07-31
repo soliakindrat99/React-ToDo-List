@@ -20,6 +20,15 @@ const ToDo = (props) => {
     else return true;
   });
 
+  const editTaskHandler = (task) => {
+    setUpdateData({
+      id: task.id,
+      priority: task.priority,
+      title: task.title,
+      description: task.description,
+    });
+  };
+
   return (
     <>
       <TaskFilter
@@ -40,17 +49,7 @@ const ToDo = (props) => {
                 <ListItemText>
                   {task.title} {task.description}
                 </ListItemText>
-                <IconButton
-                  title="Edit"
-                  onClick={() =>
-                    setUpdateData({
-                      id: task.id,
-                      priority: task.priority,
-                      title: task.title,
-                      description: task.description,
-                    })
-                  }
-                >
+                <IconButton title="Edit" onClick={() => editTaskHandler(task)}>
                   <EditOutlinedIcon sx={{ fill: "#fff" }} />
                 </IconButton>
                 <IconButton title="Delete" onClick={() => deleteTask(task.id)}>
