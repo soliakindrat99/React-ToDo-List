@@ -6,6 +6,8 @@ import { List, ListItem, ListItemText, IconButton } from "@mui/material";
 import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 
+import "./ToDo.css";
+
 const ToDo = (props) => {
   const { toDo = [], setUpdateData = () => {}, deleteTask = () => {} } = props;
 
@@ -50,10 +52,10 @@ const ToDo = (props) => {
                   {task.title} {task.description}
                 </ListItemText>
                 <IconButton title="Edit" onClick={() => editTaskHandler(task)}>
-                  <EditOutlinedIcon sx={{ fill: "#fff" }} />
+                  <EditOutlinedIcon className="onlinedIcon"/>
                 </IconButton>
                 <IconButton title="Delete" onClick={() => deleteTask(task.id)}>
-                  <DeleteOutlinedIcon sx={{ fill: "#fff" }} />
+                  <DeleteOutlinedIcon className="onlinedIcon"/>
                 </IconButton>
               </ListItem>
             );

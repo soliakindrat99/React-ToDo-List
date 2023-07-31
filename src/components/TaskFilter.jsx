@@ -1,5 +1,6 @@
 import getPriorityColor from "../helpers/getPriorityColor";
 import { Box, InputLabel, Select, MenuItem } from "@mui/material";
+import "./TaskFilter.css";
 
 const TaskFilter = (props) => {
   const dropdownChangeHandler = (event) => {
@@ -8,7 +9,7 @@ const TaskFilter = (props) => {
 
   return (
     <Box className="taskFilter">
-      <InputLabel sx={{ color: "white" }}>Filter by Priority</InputLabel>
+      <InputLabel className="inputLabel">Filter by Priority</InputLabel>
       <Select
         className="selectPriority"
         type="text"
